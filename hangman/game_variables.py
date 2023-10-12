@@ -37,7 +37,7 @@ def pick_random_word(list_to_pick_from : List[str]) -> str:
     word = random.choice(list_to_pick_from)
     return word
 
-def request_user_guess() -> str:
+def ask_for_input() -> str:
     """
     Asks the user to input a letter guess in the terminal and 
     validates if it's a letter character (e.g. AaBbCc).
@@ -51,10 +51,38 @@ def request_user_guess() -> str:
     :rtype: str
     """
     # Ask user to input a guess
-    guess = input("Enter a guess (i.e. letter): ") 
+    guess = input("Enter a guess: ") 
 
     # As long as guess is invalid, keep asking user to input valid letter
     while len(guess) != 1 or guess not in string.ascii_letters:
-        guess = input("Invalid input! Please, enter a single letter:") 
+        guess = input("Invalid letter! Please, enter a single alphabetical character:") 
 
     return guess
+
+def check_guess(guess : str, word_to_guess : str) -> bool:
+    """
+    Checks whether a letter is in a given word.
+
+    Parameters
+    ----------
+    :param guess: Letter to check
+    :type guess: str
+    :param word_to_guess: The word that might contain or not the letter.
+    :type word_to_guess: str
+
+    Returns
+    -------
+    :returns: True if the letter is in the word; False otherwise.
+    :rtype: bool
+    """
+    # Convert strings to lower case
+    guess = guess.lower()
+    word_to_guess = word_to_guess.lower()
+
+    # Check if guessed letter is in the word
+    if guess in word_to_guess:
+        print(f"Good guess! {guess} is in the word.")
+        return True
+    else:
+        print(f"Sorry, {guess} is not in the word. Try again.")
+        return False
