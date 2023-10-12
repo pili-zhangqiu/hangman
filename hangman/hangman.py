@@ -80,18 +80,13 @@ class Hangman:
 
             # Reduce number of unique letters not guessed by one
             self.num_letters -= 1
-
-            return True
         
         else:
-            print(f"Sorry, {letter} is not in the word. Try again.")
-            return False
-    
-        # TODO 3: If the letter is in the word, replace the '_' in the word_guessed list with the letter
-        # TODO 3: If the letter is in the word, the number of UNIQUE letters in the word that have not been guessed yet has to be reduced by 1
-        # TODO 3: If the letter is not in the word, reduce the number of lives by 1
-        # Be careful! A letter can contain the same letter more than once. TIP: Take a look at the index() method in the string class
-        pass
+            print(f"Sorry, {letter} is not in the word.")
+
+            # Lose a life when the letter is not in the word
+            self.num_lives -= 1
+            print(f"You have {self.num_lives} lives left.")
 
     def ask_letter(self):
         '''
