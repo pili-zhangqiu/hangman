@@ -98,32 +98,37 @@ class Hangman:
         # Ask user to input a guess
         guess = input("Enter a guess: ") 
 
-        # Check if guess is in a valid format, if not keep on asking for a valid input
-        while len(guess) != 1 or guess not in string.ascii_letters:
+        # Check if guess is in a valid format
+        if len(guess) != 1 or guess not in string.ascii_letters:
             print("Invalid letter. Please, enter a single alphabetical character.") 
-            guess = input("Enter a guess: ") 
 
-        # Check if guess was already entered, if so, keep on asking for a new input
-        while guess in self.list_of_guesses:
+        # Check if guess was already entered
+        elif guess in self.list_of_guesses:
             print("You already tried that letter!")
-            guess = input("Enter a guess: ") 
 
         # If the guess is in a valid format and is a new guess, check and update results
         else:
             self.check_letter(guess)
             self.list_of_guesses.append(guess)
 
+
 def play_game(word_list):
     # As an aid, part of the code is already provided:
     game = Hangman(word_list, num_lives=5)
-    game.ask_letter()
-        
-    
-    # TODO 4: Iteratively ask the user for a letter until the user guesses the word or runs out of lives
-    # If the user guesses the word, print "Congratulations! You won!"
-    # If the user runs out of lives, print "You lost! The word was {word}"
 
-    pass
+    while True:
+        # Check if player is still alive 
+        if game.num_lives == 0:
+            print(f"You lost! The word was {game.word}")
+
+        # Check if the word has been guessed. If not, continue the game.
+        elif game.num_letters > 0:
+            game.ask_letter()
+        
+        # If the player is alive and there are no letters reamining to guess, then the player won
+        else:
+            print("Congratulations! You won!")
+
 
 if __name__ == '__main__':
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
