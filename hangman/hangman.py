@@ -115,11 +115,13 @@ class Hangman:
 def play_game(word_list):
     # As an aid, part of the code is already provided:
     game = Hangman(word_list, num_lives=5)
+    is_game_ended = False
 
-    while True:
+    while not is_game_ended:
         # Check if player is still alive 
         if game.num_lives == 0:
             print(f"You lost! The word was {game.word}")
+            is_game_ended = True
 
         # Check if the word has been guessed. If not, continue the game.
         elif game.num_letters > 0:
@@ -128,6 +130,7 @@ def play_game(word_list):
         # If the player is alive and there are no letters reamining to guess, then the player won
         else:
             print("Congratulations! You won!")
+            is_game_ended = True
 
 
 if __name__ == '__main__':
