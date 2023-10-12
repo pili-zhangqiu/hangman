@@ -14,8 +14,8 @@ def set_world_list() -> List[str]:
 
     Returns
     -------
-    :returns: Preset list of words.
-    :rtype: List[str]
+    List[str]
+        Preset list of words.
     """
     word_list = ['apple', 'banana', 'cherry', 'dragon fruit', 'pear']
     return word_list
@@ -26,13 +26,13 @@ def pick_random_word(list_to_pick_from : List[str]) -> str:
     
     Parameters
     ----------
-    :param list_to_pick_from: List of strings to choose a word from.
-    :type list_to_pick_from: List[str]
+    list_to_pick_from : List[str]
+        List of strings to choose a word from.
 
     Returns
     -------
-    :returns: Random word from the input list.
-    :rtype: str
+    str
+        Random word from the input list.
     """
     word = random.choice(list_to_pick_from)
     return word
@@ -47,8 +47,8 @@ def ask_for_input() -> str:
 
     Returns
     -------
-    :returns: Valid letter input by user.
-    :rtype: str
+    str
+        Valid letter input by user.
     """
     # Ask user to input a guess
     guess = input("Enter a guess: ") 
@@ -65,15 +65,15 @@ def check_guess(guess : str, word_to_guess : str) -> bool:
 
     Parameters
     ----------
-    :param guess: Letter to check
-    :type guess: str
-    :param word_to_guess: The word that might contain or not the letter.
-    :type word_to_guess: str
+    guess : str
+        Letter to check
+    word_to_guess : str
+        The word that might contain or not the letter.
 
     Returns
     -------
-    :returns: True if the letter is in the word; False otherwise.
-    :rtype: bool
+    bool
+        True if the letter is in the word; False otherwise.
     """
     # Convert strings to lower case
     guess = guess.lower()
@@ -86,3 +86,4 @@ def check_guess(guess : str, word_to_guess : str) -> bool:
     else:
         print(f"Sorry, {guess} is not in the word. Try again.")
         return False
+    
