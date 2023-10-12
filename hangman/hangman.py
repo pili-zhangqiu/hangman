@@ -72,7 +72,17 @@ class Hangman:
         # Check if guessed letter is in the word
         if letter in self.word:
             print(f"Good guess! {letter} is in the word.")
+
+            # Add correct letter to word_guessed
+            for i in range(len(self.word)):
+                if letter == self.word[i]:
+                    self.word_guessed[i] = letter
+
+            # Reduce number of unique letters not guessed by one
+            self.num_letters -= 1
+
             return True
+        
         else:
             print(f"Sorry, {letter} is not in the word. Try again.")
             return False
