@@ -8,7 +8,7 @@ import string
 
 from typing import List
 
-def set_world_list() -> List[str]:
+def get_world_list() -> List[str]:
     """
     Returns a preset list of words.
 

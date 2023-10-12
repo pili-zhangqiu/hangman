@@ -1,9 +1,6 @@
-'''
-Make sure you complete all the TODOs in this file.
-The prints have to contain the same text as indicated, don't add any more prints,
-or you will get 0 for this assignment.
-'''
 import random
+
+from typing import List
 
 class Hangman:
     '''
@@ -26,6 +23,8 @@ class Hangman:
         A list of the letters of the word, with '_' for each letter not yet guessed
         For example, if the word is 'apple', the word_guessed list would be ['_', '_', '_', '_', '_']
         If the player guesses 'a', the list would be ['a', '_', '_', '_', '_']
+    letters : list
+        List of unique letters in the word
     num_letters: int
         The number of UNIQUE letters in the word that have not been guessed yet
     num_lives: int
@@ -40,12 +39,20 @@ class Hangman:
     ask_letter()
         Asks the user for a letter.
     '''
-    def __init__(self, word_list, num_lives=5):
-        # TODO 2: Initialize the attributes as indicated in the docstring
-        # TODO 2: Print two message upon initialization:
-        # 1. "The mistery word has {num_letters} characters"
-        # 2. {word_guessed}
-        pass
+    def __init__(self, word_list : List[str], num_lives=5):
+        # Initialise attributes
+        self.word_list = word_list
+        self.num_lives = num_lives
+
+        self.word = random.choice(word_list)
+        self.word_guessed = ['_' for _ in self.word]
+        self.letters = set([*self.word])
+        self.num_letters = len(self.letters)
+        self.list_of_guesses = list()
+        
+        # Print initialisation messages
+        print(f"The mistery word has {self.num_letters} characters")
+        print(f"{self.word_guessed}")
 
     def check_letter(self, letter) -> None:
         '''
