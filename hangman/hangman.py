@@ -87,6 +87,10 @@ class Hangman:
             # Lose a life when the letter is not in the word
             self.num_lives -= 1
             print(f"You have {self.num_lives} lives left.")
+        
+        # Visualise progress
+        print(f"Lives remaining: {self.num_lives}; Letters remaining to be guessed: {self.num_letters}")
+        print(self.word_guessed)
 
     def ask_letter(self) -> None:
         '''
@@ -113,9 +117,8 @@ class Hangman:
 
 
 def play_game(word_list):
-    # As an aid, part of the code is already provided:
     game = Hangman(word_list, num_lives=5)
-    is_game_ended = False
+    is_game_ended = False   # Flag to terminate the game, either when the player wins or loses all lives
 
     while not is_game_ended:
         # Check if player is still alive 
