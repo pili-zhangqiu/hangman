@@ -2,7 +2,7 @@
 """
 This script contains utility functions to design a hangman word game.
 """
-from game_variables import *
+from game_utilities import *
 
 if __name__ == "__main__":
     word_to_guess = pick_random_word(set_world_list())
