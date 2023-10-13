@@ -11,7 +11,7 @@ class Hangman:
     
     Parameters:
     ----------
-    word_list: list
+    word_list: List[str]
         List of words to be used in the game
     num_lives: int
         Number of lives the player has
@@ -20,17 +20,17 @@ class Hangman:
     ----------
     word: str
         The word to be guessed picked randomly from the word_list
-    word_guessed: list
+    word_guessed: List[str]
         A list of the letters of the word, with '_' for each letter not yet guessed
         For example, if the word is 'apple', the word_guessed list would be ['_', '_', '_', '_', '_']
         If the player guesses 'a', the list would be ['a', '_', '_', '_', '_']
-    letters : list
+    letters : List[str]
         List of unique letters in the word
     num_letters: int
         The number of UNIQUE letters in the word that have not been guessed yet
     num_lives: int
         The number of lives the player has
-    list_letters: list
+    list_letters: List[str]
         A list of the letters that have already been tried
 
     Methods:
@@ -116,7 +116,17 @@ class Hangman:
             self.list_of_guesses.append(guess)
 
 
-def play_game(word_list):
+def play_game(word_list : List[str]) -> None:
+    """
+    Starts the hangman game. 
+    
+    Iteratively asks the user for a letter until the user guesses the word or runs out of lives.
+
+    Parameters:
+    ----------
+    word_list : List[str]
+        List of available words to be guessed that can be used in the game.
+    """
     game = Hangman(word_list, num_lives=5)
     is_game_ended = False   # Flag to terminate the game, either when the player wins or loses all lives
 
@@ -137,6 +147,9 @@ def play_game(word_list):
 
 
 if __name__ == '__main__':
+    # Declare a list of available words to be guessed
     word_list = ['apple', 'banana', 'orange', 'pear', 'strawberry', 'watermelon']
+
+    # Start the hangman game
     play_game(word_list)
 # %%
