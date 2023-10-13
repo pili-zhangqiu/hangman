@@ -89,8 +89,8 @@ class Hangman:
             print(f"You have {self.num_lives} lives left.")
         
         # Visualise progress
-        # print(f"Lives remaining: {self.num_lives}; Letters remaining to be guessed: {self.num_letters}")
-        # print(self.word_guessed)
+        print(f"Lives remaining: {self.num_lives}; Letters remaining to be guessed: {self.num_letters}")
+        print(self.word_guessed)
 
     def ask_letter(self) -> None:
         '''
