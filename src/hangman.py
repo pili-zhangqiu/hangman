@@ -45,7 +45,7 @@ class Hangman:
         self.word_list = word_list
         self.num_lives = num_lives
 
-        self.word = random.choice(word_list)
+        self.word = random.choice(word_list).lower()
         self.word_guessed = ['_' for _ in self.word]
         self.letters = set([*self.word])
         self.num_letters = len(self.letters)
@@ -66,9 +66,6 @@ class Hangman:
         letter: str
             The letter to be checked
         '''
-        # Convert letter to lower case
-        letter = letter.lower()
-
         # Check if guessed letter is in the word
         if letter in self.word:
             print(f"Good guess! {letter} is in the word.")
@@ -99,8 +96,8 @@ class Hangman:
         2. If the character is a single character
         If it passes both checks, it calls the check_letter method.
         '''
-        # Ask user to input a guess
-        guess = input("Enter a guess: ") 
+        # Ask user to input a guess and convert to lowercase
+        guess = input("Enter a guess: ").lower()
 
         # Check if guess is in a valid format
         if len(guess) != 1 or guess not in string.ascii_letters:
